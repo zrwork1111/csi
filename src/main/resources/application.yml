@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  context-path:  /csi
+spring:
+   dubbo:
+    application:            #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
+      name: Consumer
+    registry:                 #注册中心配置，用于配置连接注册中心相关信息。
+      address: zookeeper://172.18.20.62:2181
+      check: false
+    protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受。
+      name: dubbo
+      port: 20880
+    scan: com.zr.csi.controller  #服务暴露与发现消费所在的package
+   thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false #开发时关闭缓存,不然没法看到实时页面
+   messages:
+      basename: i18n/Messages,i18n/Pages
+   mail:
+     host: smtp.163.com
+     username: wj1425203342@163.com
+     password: 147852369qwe
+     properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
